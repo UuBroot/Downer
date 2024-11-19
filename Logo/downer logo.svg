@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 1024 1024">
+  <!-- Generator: Adobe Illustrator 29.0.1, SVG Export Plug-In . SVG Version: 2.1.0 Build 192)  -->
+  <defs>
+    <style>
+      .st0 {
+        stroke: #9a223f;
+        stroke-width: 39.9px;
+      }
+
+      .st0, .st1 {
+        fill: none;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .st2 {
+        fill: #9b2e48;
+      }
+
+      .st1 {
+        stroke: #9b203d;
+        stroke-width: 20px;
+      }
+
+      .st3 {
+        fill: url(#Unbenannter_Verlauf_66);
+      }
+    </style>
+    <linearGradient id="Unbenannter_Verlauf_66" data-name="Unbenannter Verlauf 66" x1="605.1" y1="1099.7" x2="485.6" y2="345.4" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#585859"/>
+      <stop offset="0" stop-color="#7a7c78"/>
+      <stop offset=".6" stop-color="#fff"/>
+    </linearGradient>
+  </defs>
+  <rect class="st3" x="0" width="1024" height="1024" rx="179.7" ry="179.7"/>
+  <g id="Generatives_Objekt">
+    <path class="st2" d="M465.6,222.1c4.4-1.2,87.6-1.1,92,0s6.5,4.2,7.3,5.6l3.2,188.9c19.2,6.2,87.7-12.9,80.7,22.6s-120.3,144.2-129.9,146.1c-13.2,2.6-19.6-2.8-28.2-10.5-15.3-13.7-102.6-112.3-111.4-127.5-27.8-48.2,72.8-21.8,77.5-32.3v-179.2c2.7-5.1,2-11.9,8.9-13.7Z"/>
+    <g>
+      <line class="st0" x1="367" y1="633.9" x2="657" y2="633.9"/>
+      <path class="st1" d="M427.1,248.5c-238,75.7-271.5,392.4-54.1,517.8,102.7,59.2,236.5,44.9,325.5-33.4,167.6-147.6,110.8-414.3-99.6-484.7"/>
+    </g>
+  </g>
+</svg>
