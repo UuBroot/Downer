@@ -20,4 +20,4 @@ The authors of Downer are not responsible/liable for any misuse of this program 
 
 ## Important note for developer
 
-Unfortunately, the original git repo was mismanaged, so there is no real git history.
+It is regrettable that the original Git repository was not managed correctly, which has resulted in a lack of Git history beyond the initial v1.0.0 release.
