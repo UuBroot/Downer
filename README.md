@@ -1,7 +1,3 @@
-
-
-
-
 ![banner.png](./Logo/banner.png)
 
 ##### **Quickly download videos from YouTube, Instagram, and other popular sites on your Mac. (Linux support possible soon)**
@@ -19,3 +15,9 @@
 # Disclaimer
 
 The authors of Downer are not responsible/liable for any misuse of this program that may violate local copyright/DMCA laws. Users use this application at their own risk.
+
+---
+
+## Important note for developer
+
+Unfortunately, the original git repo was mismanaged, so there is no real git history.
