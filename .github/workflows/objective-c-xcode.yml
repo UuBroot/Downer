@@ -8,37 +8,35 @@ on:
 
 jobs:
   build:
-    name: Build and analyse default scheme using xcodebuild command
     runs-on: macos-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Set Default Scheme
+
+      - name: Detect project and scheme
+        id: project
         run: |
-          scheme_list=$(xcodebuild -list -json | tr -d "\n")
-          default=$(echo $scheme_list | ruby -e "require 'json'; puts JSON.parse(STDIN.gets)['project']['targets'][0]")
-          echo $default | cat >default
-          echo Using default scheme: $default
-      - name: Build
-        env:
-          scheme: ${{ 'default' }}
+          # Get first xcodeproj in repo
+          projname=$(ls | grep .xcodeproj | sed 's/.xcodeproj//')
+          echo "Project name: $projname"
+          echo "projname=$projname" >> $GITHUB_ENV
+
+          # Get default scheme (first target)
+          scheme=$(xcodebuild -list -json | ruby -e "require 'json'; puts JSON.parse(STDIN.read)['project']['targets'][0]")
+          echo "Default scheme: $scheme"
+          echo "scheme=$scheme" >> $GITHUB_ENV
+
+      - name: Build Archive
         run: |
-            xcodebuild clean archive \
-            -project ${{ env.projname }}.xcodeproj \
-            -scheme ${{ env.projname }} \
-            -archivePath ${{ env.projname }} \
+          xcodebuild clean archive \
+            -project "${projname}.xcodeproj" \
+            -scheme "${scheme}" \
+            -archivePath build/${projname}.xcarchive \
             -allowProvisioningUpdates
-                xcodebuild clean archive \
-            -project ${{ env.projname }}.xcodeproj \
-            -scheme ${{ env.projname }} \
-            -archivePath ${{ env.projname }} \
-            -allowProvisioningUpdates
+
       - name: Upload built app
-        uses: actions/upload-artifact@master
+        uses: actions/upload-artifact@v4
         with:
-          name: app-${{ needs.preparation.outputs.version }}
+          name: ${{ env.projname }}-app
           path: |
-            Release/${{ env.projname }}.dmg
-            Release/${{ env.projname }}.app
-          
+            build/${{ env.projname }}.xcarchive
