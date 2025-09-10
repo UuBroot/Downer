@@ -1,0 +1,42 @@
+name: Xcode - Build and Analyze
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Detect project and scheme
+        id: project
+        run: |
+          # Get first xcodeproj in repo
+          projname=$(ls | grep .xcodeproj | sed 's/.xcodeproj//')
+          echo "Project name: $projname"
+          echo "projname=$projname" >> $GITHUB_ENV
+
+          # Get default scheme (first target)
+          scheme=$(xcodebuild -list -json | ruby -e "require 'json'; puts JSON.parse(STDIN.read)['project']['targets'][0]")
+          echo "Default scheme: $scheme"
+          echo "scheme=$scheme" >> $GITHUB_ENV
+
+      - name: Build Archive
+        run: |
+          xcodebuild clean archive \
+            -project "${projname}.xcodeproj" \
+            -scheme "${scheme}" \
+            -archivePath build/${projname}.xcarchive \
+            -allowProvisioningUpdates
+
+      - name: Upload built app
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.projname }}-app
+          path: |
+            build/${{ env.projname }}.xcarchive
